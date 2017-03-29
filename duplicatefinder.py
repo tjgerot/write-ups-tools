@@ -1,3 +1,4 @@
+from __future__ import print_function
 from argparse import ArgumentParser
 from os.path import join
 from os import walk
@@ -31,4 +32,6 @@ for root, directories, files in walk(args.writeupsdir):
                 # If user chooses to edit duplicate files, open with Atom
                 if args.atom_edit:
                     system("atom " + join(root, f))
-print(str(dup_files), "files with duplicates found.", ("\nAll " + str(dup_files) + " duplicate files opened with Atom.") if args.atom_edit else "")
+print(str(dup_files) + " files with duplicates found.")
+if args.atom_edit:
+    print("\nAll " + str(dup_files) + " duplicate files opened with Atom.")
